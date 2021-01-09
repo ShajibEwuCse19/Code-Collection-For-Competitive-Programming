@@ -9,9 +9,11 @@
 
 using namespace std;
 
-vector < pair < int , int > > vec[N];
+vector < pair < int , int > > vec[N]; //first element is adj node and second element is distance.
 
-pair < int , int > dfs(int n , int par)
+//all comment is applicable for first dfs--> to find farthest node(X) from root(A).
+
+pair < int , int > dfs(int n , int par) //n = root node(A) and par = parent of root node.
 {
     pair < int , int > ans = {0,n};
     for(auto p:vec[n]){
@@ -19,10 +21,10 @@ pair < int , int > dfs(int n , int par)
         if(a != par){
             pair < int , int > tmp = dfs(a,n);
             tmp.first += c;
-            ans = max(ans , tmp);
+            ans = max(ans , tmp); // distance of farthest node and the node(X).
         }
     }
-    return ans;
+    return ans;//dfs will return a pair with most distance node and distance.
 }
 
 int main()
@@ -35,7 +37,9 @@ int main()
         vec[b].push_back({a,c});
         vec[a].push_back({b,c});
     }
-    int a = dfs(1,0).second;
-    pair < int , int > ans = dfs(a,0);
+    
+    int a = dfs(1,0).second;//to find distance root node(A) to farthest node(X).
+    
+    pair < int , int > ans = dfs(a,0);//to find distance from (X) to (Y)  which is the Diameter of the Tree.
     return 0;
 }
