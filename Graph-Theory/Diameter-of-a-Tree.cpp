@@ -21,7 +21,7 @@ pair < int , int > dfs(int n , int par) //n = root node(A) and par = parent of r
         if(a != par){
             pair < int , int > tmp = dfs(a,n);
             tmp.first += c;
-            ans = max(ans , tmp); // distance of farthest node and the node(X).
+            ans = max(ans , tmp); // distance of farthest node(X).
         }
     }
     return ans;//dfs will return a pair with most distance node and distance.
@@ -38,7 +38,7 @@ int main()
         vec[a].push_back({b,c});
     }
     
-    int a = dfs(1,0).second;//to find distance root node(A) to farthest node(X).
+    int a = dfs(1,0).second;//to find distance root node(A) to farthest node(X). a = farthest node (X).
     
     pair < int , int > ans = dfs(a,0);//to find distance from (X) to (Y)  which is the Diameter of the Tree.
     return 0;
