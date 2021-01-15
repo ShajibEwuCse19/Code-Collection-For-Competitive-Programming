@@ -1,0 +1,175 @@
+Decimal to Binary:
+===================
+Let, n = 16.
+we'll divided n by 2 untill it's greater than 0. 
+
+while (n>0)n = n/2;
+
+16->8->4->2->1->0 = 0 0 0 0 1 (reminder) is the binary number of decimal 16.
+
+Binary to Decimal:
+===================
+Let, n = 1101.01
+sizeof(n) = 4
+
+ans = (1x2^3) + (1x2^2) + (1x2^1) + (1x2^0) (1x2^-1) + (1x2^-2) = 8 + 4 + 2 + 1 + 0 + 0.25 = 13.25 //2^0 = 1.
+13.25 is the decimal form of n.
+
+Exercise: প্রত্যেক সংখ্যাকে কিছু distinct ২ এর power এর summation আকারে লিখতে হবে ।
+Answer  : বাইনারি থেকে ডেসিমালে রূপান্তর করলে আমরা ২এর যে power পাই তার সব গুলোই 0 থেকে sizeof(n) এর সমান। সব গুলোই distinct. বাইনারি থেকে ডেসিমালে কনভার্ট করলেই উত্তর।
+
+Exercise: কোন সংখ্যাকে সর্বোচ্চ কতটি ২ এর পাওয়ার হিসেবে লিখতে পারি ?
+Answer  : Let, n = 5 = 2^0 + 2^2 = 1 + 4 = 5 (ans = 2).
+Let n = 7 = 2^0 + 2^1 + 2^2 = 1 + 2 + 4 = 7 (ans = 3).
+Let , total power = x.
+
+Now, 2^x = n 
+   => log2^x = log(n)
+   => xlog2 = log(n)
+   
+if, n = 5 , log(5) = 2.5 // so, ans = floor(2.5) = 2
+if, n = 7, log(7)  = 3.
+log(2x10^8) = 32 (MAX_INT).
+log(2x10^18) = 64 (LONG_MAX_INT).
+
+==> log(n)base (b) = log(n)/log(b) [Avoid Fractions]
+log(5) = log(5)/log(2) [for 2 base log]
+
+Left-Shift(<<):
+================
+কোন সংখ্যাকে দ্বিগুণ করে । যে্মন, 5<<1 = 5x2 = 10
+Explanation: 5 = 101 in binary = 00000101. (শেষ থেকে ১ এর অবস্থান ৩নাম্বার)।
+             5<<1 = 1010       = 00001010.  (এক ঘর বামে আসায় শেষ এ  ০ যোগ এবং এক এর অবস্থান শেষ থেকে ৪ এ)। 
+             
+right-Shift(>>):Opposite of left-shift
+=================
+কোন সংখ্যাকে 2ভাগ বা অর্ধেক করে । যে্মন, 5>>1 = 5/2 = 2.5
+Explanation: 5 = 101 in binary = 00000101. (শেষ থেকে ১ এর অবস্থান ৩নাম্বার)।
+             5<<1 = 1010       = 00000010.  (এক ঘর ডানে আসায় শেষ এর এক উঠে যাবে এবং সব সংখ্যা এক ঘর ডানে সরে যাবে)। 
+             
+ Bitwise OR (|):
+ =================
+ 1 | 1 = 1
+ 1 | 0 = 1
+ 0 | 1 = 1
+ 0 | 0 = 0
+ 
+ 5 = 101, 8 = 1000.
+ 5|8 = 1101 = 13 (5 + 8 = 13).
+ 12|4 = 12  (12 + 4 not equal 12).
+ 
+ So, min(a|b) = max(a,b).
+     max(a|b) = (a+b).
+     
+ 
+ Exercise: কিভাবে একটি নির্দিষ্ট পজিশনের বিট ON(Only convert 0 to 1) করতে পারি ?
+ => Let, n = 12 = 1100. (We want to turn on 2nd bit from last position).
+ position = 1 (3 2 1 0 is Array index in reverse order = sizeof(1100) string)
+ a = 1<<position = 1<<1 = 10.
+ 
+ Now,
+       n = 1 1 0 0
+       a = 0 0 1 0 (1<<pos)
+ ---------------------------------------
+    n|a  = 1 1 1 0 (Turn on 2nd index).
+ 
+ Answer = n|(1<<position).
+ 
+ Bitwise AND(&):
+ ===============
+ 1 & 1 = 1
+ 1 & 0 = 0
+ 0 & 1 = 0
+ 0 & 0 = 0
+ 
+ min(a & b) = 0
+ max(a & b) = min(a,b).
+ 
+ Exercise: কিভাবে একটি নির্দিষ্ট পজিশনের বিট OFF(Only convert 1 to 0) করতে পারি ?
+ n = 10101, we'll make 1 (2nd position in array reverse order ).
+ 
+ a = 1<<position = 1<<2 = 00100;
+ 
+    n = 1 0 1 0 1
+    a = 0 0 1 0 0
+---------------------------
+a & n = 0 0 1 0 0 (Wrong because সব অফ হয়ে গেছে ).
+ 
+ a = 00100.
+ NOT(a) = ~a = 11011
+ 
+ Now,
+      n = 1 0 1 0 1
+     ~a = 1 1 0 1 1
+ ----------------------------------
+n & ~a  = 1 0 0 0 1 
+ 
+ Answer : n & (~(1<<position)).
+ 
+ Exercise: কোন একটি পজিশন ০ নাকি ১ ?
+ => a = 1 0 1 0 1 (find for 2nd position)
+    b = 0 0 1 0 0 (1<<position)
+-----------------------------------------------
+a & b = 0 0 1 0 0 (if 2nd position = 1 then ans = 1 else ans = 0). Here 2nd pos = 1 . so, ans = 1. 
+
+Bitwise X-OR(^):
+===================
+ 1 ^ 1 = 0
+ 1 ^ 0 = 1
+ 0 ^ 1 = 1
+ 0 ^ 0 = 0
+ 
+ Exercise: Sum of two numbers.
+ =>       a = 21 = 1 0 1 0 1
+          b = 27 = 1 1 0 1 1
+-----------------------------------------------
+   a ^ b         = 0 1 1 1 0 = 14
+   a & b         = 1 0 0 0 1 = 17
+  2(a & b) = 2x17            = 34
+  
+  sum = 14 + 34 = 48 = 21 + 27.
+  
+  Answer: Sum of two numbers = (a ^ b) + (2*(a & b))
+  
+  Exercise: if a^b^c^d = x,then a^c^d = ?
+  => Let, a^b^c = y
+  
+  Now, (a^b^c^d)^b = (a^c^d)^(b^b) = a^c^d [b^b = 0]
+  
+  
+  Exercise: শেষের ২ঘরের বিট flip (উল্টানো)  করতে হব ? ০ থাকলে ১ , ১ থাকলে ০ বানাতে হবে । 
+  => Let, n = 1 0 1 1
+  sizeof(n) = 4
+  
+      let, a(1<<2) = 0 0 1 0 0 (0 to 2 index).
+                           - 1
+  -------------------------------------------------------
+  (1<<2)-1         = 0 0 0 1 1 [bitwise minus]
+         n         = 0 1 0 1 1
+---------------------------------------------------------
+n^((1<<2)-1)       = 0 1 0 0 0
+
+Answer : n^((1<<position)-1)
+
+
+Random Exercise:
+==================
+
+1. a-তম ঘরে ১ আছে কিনা ?
+=> let a = 3rd index=3
+ 
+Let, n = 1 0 1 0 0 1
+
+n>>a = n>>3 = 0 0 0 1 0 1
+                        1
+-----------------------------
+(n>>3) & 1  = 0 0 0 0 0 1 = 1 in decimal. So, ans = 1.
+
+Answer:if((n>>position) & 1 == 1 ) ans = 1. else ans = 0.
+
+2. একটি সংখ্যা জোড় নাকি বেজোড় ?
+Answer: if(n & 1 == 1) ans odd.
+        if (n & 1 == 0) ans even.
+  
+  
+ 
