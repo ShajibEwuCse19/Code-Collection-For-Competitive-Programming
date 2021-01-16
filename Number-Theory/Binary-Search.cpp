@@ -90,3 +90,103 @@ STL:
 
 //Complexity log(n)
 
+
+Lower Bound:
+============
+  //Md. Shajibul Islam..
+//East West University, CSE Department'19
+
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST             ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0)
+
+int Lower_Bound(int a[] , int sz , int x)
+{
+    int l = 0, r = sz - 1;
+
+    int ans = sz; //max index
+    while( l <= r)
+    {
+        int mid = l + (r - l) / 2;
+
+        if( a[mid] >= x )
+        {
+            ans = min( ans , mid );
+            r = mid - 1;//if we get x then we'll take the minimum index. So, we'll go to left.
+        }
+        else l = mid + 1;
+    }
+
+    return ans;
+}
+
+int main()
+{
+    FAST;
+    int n ;cin >> n ;
+    int a[n];
+    for(int i = 0 ; i < n ; i++)cin >> a[i];
+    sort( a , a + n );
+
+    int x ; cin >> x;
+
+    int ans = Lower_Bound( a , n , x );
+
+    cout << "Lower Bound = " << ans+1 << endl;
+}
+
+
+Upper Bound:
+=============
+  //Md. Shajibul Islam..
+//East West University, CSE Department'19
+
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST             ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0)
+
+int Upper_Bound(int a[] , int sz , int x)
+{
+    int l = 0, r = sz - 1;
+
+    int ans = -1;//minimum index.
+    while( l <= r)
+    {
+        int mid = l + (r - l) / 2;
+
+        if( a[mid] <= x )
+        {
+            ans = max( ans , mid );//if we get x then we'll take the maximum index. So, we'll go to right to get max index.
+            l = mid + 1;
+        }
+        else r = mid - 1; 
+    }
+
+    return ans;
+}
+
+int main()
+{
+    FAST;
+    int n ;cin >> n ;
+    int a[n];
+    for(int i = 0 ; i < n ; i++)cin >> a[i];
+    sort( a , a + n );
+
+    int x ; cin >> x;
+
+    int ans = Upper_Bound( a , n , x );
+
+    cout << "Upper Bound = " << ans+1 << endl;
+}
+
+
+STL:
+=====
+  sort(v.begin(), v.end());
+
+	auto lower = lower_bound(v.begin(), v.end(), 10) - v.begin() + 1;
+	auto upper = upper_bound(v.begin(), v.end(), 10) - v.begin() + 1;
+
+
+
