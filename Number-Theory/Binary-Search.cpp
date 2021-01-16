@@ -16,7 +16,7 @@ bool Binary_Search(int x , int n)
 
     while(l <= r)
     {
-        int mid = ( l + r ) / 2;
+        int mid = l + ( r - l + 1) / 2;
 
         if( a[mid] == x )return true;
         else if ( a[mid] > x )r = mid - 1;
@@ -55,7 +55,7 @@ int Binary_Search(int ara[] , int x , int l , int r)
 
     if(r >= l)
     {
-        int mid = l + ( r - l ) / 2;
+        int mid = l + ( r - l + 1) / 2;
 
         if(ara[mid] == x)return mid;
 
@@ -107,7 +107,7 @@ int Lower_Bound(int a[] , int sz , int x)
     int ans = sz; //max index
     while( l <= r)
     {
-        int mid = l + (r - l) / 2;
+        int mid = l + (r - l + 1) / 2;
 
         if( a[mid] >= x )
         {
@@ -152,7 +152,7 @@ int Upper_Bound(int a[] , int sz , int x)
     int ans = -1;//minimum index.
     while( l <= r)
     {
-        int mid = l + (r - l) / 2;
+        int mid = l + (r - l + 1) / 2;
 
         if( a[mid] <= x )
         {
