@@ -22,11 +22,11 @@ int vol[105],pro[mx],n; ///vol = volume, pro = profit/weight, n = total index;
 
 ll Knapsack(int idx , int rem)
 {
-    if(rem < 0) return -MAXL; /// Capacity will not be negative.
+    if(rem < 0) return -MAXL; /// Capacity will not be negative.(Impossible Answer).
+    
+    if(idx > n)return dp[idx][rem] = 0; ///Current index > Max index then return back; (Base Case).
 
     if(dp[idx][rem] != -1)return dp[idx][rem]; ///if the value is calculated before.
-
-    if(idx > n)return dp[idx][rem] = 0; ///Current index > Max index then return back;
 
     ll ans = -MAXL; /// initial ans negative (small value).
 
