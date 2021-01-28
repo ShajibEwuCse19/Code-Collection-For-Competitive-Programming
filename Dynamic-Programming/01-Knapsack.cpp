@@ -1,3 +1,6 @@
+Capacity Max to min:
+=====================
+
 //Md. Shajibul Islam..
 //East West University, CSE Department'19
 
@@ -61,5 +64,42 @@ int main()
 /// O ( n * Capacity )
 
 
+Capacity Min to Max:
+======================
+    #include<bits/stdc++.h>
+using namespace std;
+
+const int mx = 1e5+123;
+long long dp[123][mx];
+
+int p[123], w[123];
+int Sz, n;
+
+long long solve ( int i, int curW ) ///curW =  Current Weight(Capacity)--> Initially 0.
+{
+    if ( i > n ) return 0;///Current Index(i) > Max Index(n)
+    if ( dp[i][curW] != -1 ) return dp[i][curW]; ///Already Calculated.
+
+    long long ret1 = 0, ret2 = 0;
+
+    if ( w[i] + curW <= Sz ) ret1 = p[i] + solve ( i+1, w[i] + curW ); ///Increast Current Weight and Add the Profit to Ans for the weight.
+    ret2 = solve ( i+1, curW ); /// If w[i] + CurW > Sz then go to next index.
+
+    return dp[i][curW] = max ( ret1, ret2 ); ///Return the max answer from ret1 and ret2.
+}
+
+
+int main()
+{
+    cin >> n >> Sz; ///n = max Index and Sz = Total Capacity.
+    for ( int i = 1; i <= n; i++ ) {
+        cin >> w[i] >> p[i]; ///Input Weight and Profit.
+    }
+
+    memset ( dp, -1, sizeof ( dp ) );
+    cout << solve ( 1, 0 ) << endl; ///from index 1 and Capacity 0.
+
+    
+}
 
 
