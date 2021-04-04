@@ -1,9 +1,10 @@
 Code-1:
 =============================
-const int mx = 1e5+123;
+const int mx = 1e6+123;
 bool isPrime[mx];
+vector<int> prime; ///store all primes here.
 
-void primeGen()
+void sieve()
 {
     memset(isPrime,1,sizeof isPrime);///initially all no. are 1 means prime.
     isPrime[1] = 0; ///1 is not prime.
@@ -17,20 +18,20 @@ void primeGen()
             ///no need to consider even but (i+2*i) = (3+2*3) (odd + even -> odd) = (3+6) = 9(odd).
         }
     }
-}
 
+    ///store all prime in the prime vector
+     prime.push_back(2);///2 is only even prime.
+     for ( int i = 3; i <= mx; i += 2 ) {
+        if ( isPrime[i] == 1 ) prime.push_back ( i );
+    }
+}
 
 int main()
 {
     FAST;
-    int n ;
-    cin >> n ;
+    sieve();
 
-    primeGen();
-
-    for(int i=1 ; i <= n ; i++)if ( isPrime[i] ) cout << i<< " " ;
-    cout << endl ;
-
+    for(int i=1;i<=25;i++)cout << prime[i] << " " ;///first 25 prime numbers = 3 5 7 11 13 17 19 23 29 31 37 41 43 47 53 59 61 67 71 73 79 83 89 97 101
 }
 
 Complexity: n * Harmonic Series = nln(n)  ///We can do 1e8 operations in 1sec easily.
