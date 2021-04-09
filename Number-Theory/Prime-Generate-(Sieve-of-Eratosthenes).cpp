@@ -8,21 +8,18 @@ void sieve()
 {
     memset(isPrime,1,sizeof isPrime);///initially all no. are 1 means prime.
     isPrime[1] = 0; ///1 is not prime.
+    prime.push_back(2);///2 is only even prime.
 
     for(int i = 4 ; i <= mx ; i += 2)isPrime[i] = 0;///all even are composite except 2.
     for(int i = 3 ; i <= mx ; i += 2) ///The loop will go on odd numbers.
     {
         if(isPrime[i])///if i (3) is prime then go into the loop. the divisors of i(9 , 15 , 21..etc)are not prime (isPrime[divisor of i]=0).
         {
+            prime.push_back ( i ); ///store all prime if it's prime.
+            
             for(int j = i + 2 * i ; j <= mx ; j += 2 * i)isPrime[j] = 0;///Here, i=3, 2*i=2*3=6(even),2*odd = odd + odd = even.
             ///no need to consider even but (i+2*i) = (3+2*3) (odd + even -> odd) = (3+6) = 9(odd).
         }
-    }
-
-    ///store all prime in the prime vector
-     prime.push_back(2);///2 is only even prime.
-     for ( int i = 3; i <= mx; i += 2 ) {
-        if ( isPrime[i] == 1 ) prime.push_back ( i );
     }
 }
 
