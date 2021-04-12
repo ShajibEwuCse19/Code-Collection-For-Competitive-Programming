@@ -1,7 +1,7 @@
 Code-1:
 =================
 const int mx = 1e7+123;
-bitset<mx> isPrime; ///if boolean array use n memory, bitset will use (n/36) memory. initially all index 0
+bitset<mx> isPrime; ///if boolean array use n memory, bitset will use (n/32) memory. initially all index 0
 vector<int> prime; ///store all prime.
 
 void sieve ( int n )
