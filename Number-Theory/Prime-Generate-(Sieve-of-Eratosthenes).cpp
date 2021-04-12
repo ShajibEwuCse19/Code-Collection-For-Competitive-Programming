@@ -30,7 +30,7 @@ void sieve ( int n )
 
 int main()
 {
-    ///FAST;
+    FAST;
 
     int n = 100;
     sieve(n);
