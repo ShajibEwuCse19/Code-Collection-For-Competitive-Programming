@@ -75,6 +75,9 @@ int main()
     primeFactor( n ) ;
 
     for(auto i : factor)cout<<i<<" ";cout<<endl; ///output all prime factor from factor array(vector).
+    
+    
+    factor.clear();///must use this function for clear factor vector.
 }
 
 
