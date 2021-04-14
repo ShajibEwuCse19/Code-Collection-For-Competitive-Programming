@@ -80,12 +80,13 @@ int main()
     ll n = 100;
     vector < ll > ans = factor(n);
 
-    for(auto i : ans)cout<<i<<" ";cout<<endl;
-    
+    cout<<"Prime Factor of "<<n<<" = ";
+    for(auto i : ans)cout<<i<<" ";cout<<endl<<endl<<endl;
+
    /// Output Prime divisor in a range or any specific number. Description Number of Divisor Code. Complexity: nln(n)
-    for (auto p : prime) 
+    for (auto p : prime)
     {
-        for ( int i = p; i <= lim; i += p )
+        for ( int i = p; i <= n; i += p )
         {
             fact[i].push_back ( p );
         }
@@ -95,11 +96,24 @@ int main()
         cout<<"Prime Divisor of "<<i<<" = ";
         for(auto x : fact[i])cout<<x<<" ";cout<<endl;
     }
-    
-    
+
+
 }
 
+Output:
+============
+Prime Factor of 100 = 2 2 5 5
 
+
+Prime Divisor of 2 = 2
+Prime Divisor of 3 = 3
+Prime Divisor of 4 = 2
+Prime Divisor of 5 = 5
+Prime Divisor of 6 = 2 3
+Prime Divisor of 7 = 7
+Prime Divisor of 8 = 2
+Prime Divisor of 9 = 3
+Prime Divisor of 10 = 2 5
 
 
 Code-2
