@@ -55,7 +55,7 @@ vector<ll> factor (ll n)
         if ( 1LL * p * p > n ) break;
 
         if ( n % p == 0 ) {
-            ///ret.push_back (p); ///store just one divisor from same type multiple divisors.
+            ///ret.push_back (p); ///store just one divisor from same type multiple divisors. remove duplicate
 
             while ( n % p == 0 ) {
                 ret.push_back (p);
