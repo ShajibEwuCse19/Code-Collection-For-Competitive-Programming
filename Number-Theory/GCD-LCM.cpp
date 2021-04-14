@@ -26,3 +26,5 @@ Now,       a = 2 x 2 x 2 x 3 x 3 x 5 x 1 x 1 = 2^3 x 3^2 x 5^1 x 7^0   -> All ar
   C++ STL:
 ============
 __gcd( a , b );
+
+ll LCM = a * ( b / __gcd( a , b) );
