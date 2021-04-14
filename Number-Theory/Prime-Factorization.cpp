@@ -19,6 +19,9 @@ int dx[] = {0, 0, +1, -1, +1, +1, -1, -1};
 int dy[] = {+1, -1, 0, 0, +1, -1, +1, -1};
 
 const int mx = 1e7+123;
+
+vector<int> fact[mx];///store all prime divisor here.
+
 bitset<mx> isPrime; ///if boolean array use n memory, bitset will use (n/32) memory. initially all index 0
 vector<int> prime; ///store all prime.
 
@@ -78,6 +81,22 @@ int main()
     vector < ll > ans = factor(n);
 
     for(auto i : ans)cout<<i<<" ";cout<<endl;
+    
+   /// Output Prime divisor in a range or any specific number. Description Number of Divisor Code. Complexity: nln(n)
+    for (auto p : prime) 
+    {
+        for ( int i = p; i <= lim; i += p )
+        {
+            fact[i].push_back ( p );
+        }
+    }
+
+    for ( int i = 2; i <= 10; i++ ) {
+        cout<<"Prime Divisor of "<<i<<" = ";
+        for(auto x : fact[i])cout<<x<<" ";cout<<endl;
+    }
+    
+    
 }
 
 
