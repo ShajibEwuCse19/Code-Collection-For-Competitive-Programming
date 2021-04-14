@@ -28,3 +28,33 @@ Now,       a = 2 x 2 x 2 x 3 x 3 x 5 x 1 x 1 = 2^3 x 3^2 x 5^1 x 7^0   -> All ar
 __gcd( a , b );
 
 ll LCM = a * ( b / __gcd( a , b) );
+
+
+Code-1: Euclidean
+=========
+int gcd(int a, int b)
+{
+    if (a == 0)
+        return b;
+    return gcd(b%a, a);
+}
+
+Code-2: Recursive
+========
+int gcd(int a, int b)
+{
+    // Everything divides 0
+    if (a == 0)
+       return b;
+    if (b == 0)
+       return a;
+  
+    // base case
+    if (a == b)
+        return a;
+  
+    // a is greater
+    if (a > b)
+        return gcd(a-b, b);
+    return gcd(a, b-a);
+}
