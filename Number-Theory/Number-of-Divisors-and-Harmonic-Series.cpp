@@ -120,7 +120,11 @@ Numbers are : 2 4 6 8 10 ///index 0 to 4
 
 Number of Divisor (NOD) from Prime Factorization:
 ===================================================
+n এর ডিভাইজর হচ্ছে সেই সব সংখ্যা যে সংখ্যাগুলো দ্বারা n কে ভাগ করলে ভাগফল নিঃশ্বেষে বিভাজ্য হয়। যেমন, ২ হচ্ছে ৬ এর ডিভাইজর কারণ ( ৬ / ২ = ০ ).
+    
 -> How many Divisor of n = 60 have? Using Prime factorization.
+    
+আমরা ১ থেকে n পর্যন্ত লুপ চালিয়ে ( n % i == 0 ) হয় কিনা চেক করে সব ডিভাইজর বের করে ফেলতে পারি। কিন্তু এর কপ্লেক্সিটি অনেক বেশি হবে। নিচে ইফিশিয়েন্ট Algo আলোচনা করা হলো,
 
  n = 60 = 2 x 2 x 3 x 5 = 2^2 x 3^1 x 5^ 1
     
@@ -201,22 +205,24 @@ void sieve ( int n )
     }
 }
 
-ll NOD (ll n)
+ll NOD (ll n) ///Let, n = 60
 {
     ll Total_NOD = 1; /// for multiply initial NOD = 1
 
-    for ( auto p : prime ) {
+    for ( auto p : prime ) { /// p = 2 , 3 , 5
         if ( 1LL * p * p > n ) break;
 
-        if ( n % p == 0 ) {
+        if ( n % p == 0 ) { 
             int cnt = 1; ///cnt = 1 for (d^0 = 1) 
 
             while ( n % p == 0 ) {
-                n /= p;
-                cnt++; /// cnt total divisor of a specific divisor of a number. if n = 60 then for 2 , cnt = 1 + 1 + 1 = 3.
+                    
+                n /= p; /// n = 60/2 -> 30/2 -> 15/3 -> 5/5 -> 1
+                
+                cnt++;  /// cnt = 3 + 2 + 2
             }
 
-            Total_NOD = ( cnt * Total_NOD ); /// Total_NOD = (3 * 1) = 3 for n = 60 and divisor = 2;
+            Total_NOD = ( cnt * Total_NOD ); /// Total_NOD = ( 1 * 3 * 2 * 2 ) = 12
         }
     }
 
@@ -235,6 +241,7 @@ int main()
 
     cout<<ans<<endl;///3 x 2 x 2 = 12 for n = 60
 }
+
 
     
 
