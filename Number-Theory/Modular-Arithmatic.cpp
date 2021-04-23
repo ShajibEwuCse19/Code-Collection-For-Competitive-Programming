@@ -1,13 +1,19 @@
 Applications:
 ==============
+        
 1. ans = ( a + b ) % m = ( ( a % m ) + ( b % m ) ) % m 
+
 
 2. ans = ( a - b ) % m = ( a % m ) - ( b % m ) ; 
         if ( ans < 0 ) ans = ( ans + m ) ; 
         ans = ans % m;
 
+
 3. ans = ( a * b ) % m = ( ( a % m ) * ( b % m ) ) % m 
    ans = ( a * b * c ) = ( ( ( ( a % m ) * b ) % m ) * c ) % m
+   
+   
+   
    
 4. Modular Exponentiation or Big MOD : ( pow ( a , b ) % MOD ) or ( a ^ b ) % MOD 
 ==================================================================================
@@ -62,3 +68,22 @@ Complexity : O ( log ( Power ) ).
         Now , power = 5 / 2 = 2 and num = num * num = num ^ 2
         then, power = 2 / 2 = 1 and num = (num ^ 2) * (num ^ 2) = num ^ 4
         then, power odd. So, ans = (num ^ ans) , which is final Result. 
+        
+
+        
+        
+Modular Division:
+===================
+Let, ( a / b ) % MOD ; It'll be easy if a is divisible by b; If the result is fractional, such as ( 8 / 7 ), ( 5 / 2 ) etc, Then how can we determine MOD result ? 
+ 
+   Given,  ( a / b ) % MOD
+         = ( a * ( b ^ -1 ) ) % MOD
+         
+  Euler Theorem, ( b ^ -1 ) % MOD == ( ( b ^ MOD-2 ) ) % MOD     ---> Equvalent
+        Answer  = ( a * Euler Theorem ) % MOD
+  
+  Example: 
+  1. ( 28 / 7 ) % 5 == 4 % 5 == 4
+  Prove, ( 28 / 7 ) = 28 * ( 7 ^ -1)
+    Now, ( 7 ^ -1) % 5 = ( 7 ^ 5-2 ) % 5 = ( 7 ^ 3 ) % 5 = 343 % 5 = 3
+    Ans  = ( a * Euler Theorem ) % MOD = ( ( 28 % 5 ) * ( 3 % 5 ) % 5 ) = ( 3 * 3) % 5 = 9 % 5 = 4 (Ans.)
