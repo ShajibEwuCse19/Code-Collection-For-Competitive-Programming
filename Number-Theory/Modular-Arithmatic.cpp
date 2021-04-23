@@ -16,7 +16,7 @@ Applications:
    
    
 4. Modular Exponentiation or Big MOD : ( pow ( a , b ) % MOD ) or ( a ^ b ) % MOD 
-==================================================================================
+===================================================================================================================================
 Easy Solution : ( a ^ b ) হওয়ায় a কে  b সংখ্যক বার লুপ চালিয়ে গুণ করলে ( a ^ b ) পাওয়া যাবে। 
 যেমন, ( 3 ^ 5 ) = 3 x 3 x 3 x 3 x 3 ; এক্ষেত্রে ans কে বার বার MOD ( % ) করতে হবে সাতে ans অনেক বড় না হয়।
 এই সমাধান সব ক্ষেত্রে কাজ করবে না।
@@ -55,7 +55,7 @@ int main()
     cout << ans << endl;
 }
 
-Complexity : O ( log ( Power ) ).
+Complexity : O ( log ( Power ) ) ,  2 based log
 
 এখানে , Power odd হলে প্রথমেই তাকে Power 1 কমিয়ে even বানানো হয়েছে । সেই অংশ রেজাল্ট এ আগেই যুক্ত করা হয়েছে । 
 
@@ -72,12 +72,14 @@ Complexity : O ( log ( Power ) ).
 
         
         
-Modular Division:
-===================
+Modular Division Or MOD Inverse:
+=========================================================================================
+        
 Let, ( a / b ) % MOD ; It'll be easy if a is divisible by b; If the result is fractional, such as ( 8 / 7 ), ( 5 / 2 ) etc, Then how can we determine MOD result ? 
  
-   Given,  ( a / b ) % MOD
-         = ( a * ( b ^ -1 ) ) % MOD
+   Given,  ( a / b ) % MOD , এখানে a or b নেগেটিভ হলে আলাদাভাবে হ্যান্ডেল করতে হবে । ( a % MOD ) + MOD or ( b % MOD ) + MOD
+         = (a * ( 1 / b ) ) % MOD
+         = ( a * ( b ^ -1 ) ) % MOD = ( ( a % MOD ) * (( b ^ -1 ) % MOD ) % MOD ) . Here, b ^ -1 is b inverse ( 1 / b ). 
          
   Euler Theorem, ( b ^ -1 ) % MOD == ( ( b ^ MOD-2 ) ) % MOD     ---> Equvalent
         Answer  = ( a * Euler Theorem ) % MOD
@@ -86,4 +88,44 @@ Let, ( a / b ) % MOD ; It'll be easy if a is divisible by b; If the result is fr
   1. ( 28 / 7 ) % 5 == 4 % 5 == 4
   Prove, ( 28 / 7 ) = 28 * ( 7 ^ -1)
     Now, ( 7 ^ -1) % 5 = ( 7 ^ 5-2 ) % 5 = ( 7 ^ 3 ) % 5 = 343 % 5 = 3
-    Ans  = ( a * Euler Theorem ) % MOD = ( ( 28 % 5 ) * ( 3 % 5 ) % 5 ) = ( 3 * 3) % 5 = 9 % 5 = 4 (Ans.)
+    Ans  = ( a * Euler Theorem ) % MOD = ( ( 28 % 5 ) * ( 3 % 5 ) % 5 ) = ( 3 * 3) % 5 = 9 % 5 = 4 (Ans.) 
+          
+   উপরের Euler Theorem এ b (বেজ) সব সময় প্রাইম নাম্বার হবে। অন্য কোন  ক্ষেত্রে প্রযোজ্য না। উপরে ৭ প্রাইম হওয়ায় সূত্রটি প্রমাণিত হয়েছে।
+
+Code:
+ll B_Inverse ( ll num , ll pwr , ll mod) /// BIG MOD Algo.
+{
+    num = num % mod ; /// update num (base) if it's more than MOD.
+    if ( num == 0 ) return 0; ///In case num is divisible by power.
+
+    ll ans = 1 ; /// Initial Result
+
+    while( pwr > 0 )
+    {
+        if ( pwr & 1 ) ans = (( num % mod ) * ans ) % mod ;/// If power is odd, multiply num with result and make it even. reduce power 1.
+
+        pwr = ( pwr >> 1 ) ;/// power must be even now. pwr = pwr / 2
+
+        num = ( ( num % mod ) * ( num % mod) ) % mod; /// num ^ 2 -> num ^ 4 -> num ^ 8 ......
+    }
+
+    return ans;
+}
+
+int main()
+{
+    FAST;
+    ll a , b , m ; /// ( a / b ) % m
+    cin >> a >> b >> m ; /// input base , power , MOD
+
+    ll b_Inv = B_Inverse( b , m - 2 , m ); ///( b ^ -1 ) = ( b ^ m-2) % m -> Euler Theorem for Prime Base (b )
+
+    a = a % m ;/// update a
+
+    ll ans = ( a * b_Inv) % m ; /// final Updated Answer.
+
+    cout << ans << endl;
+}
+
+Complexity : O ( log ( MOD - 2 ) )   , 2 based log
+
