@@ -81,7 +81,7 @@ Let, ( a / b ) % MOD ; It'll be easy if a is divisible by b; If the result is fr
          = (a * ( 1 / b ) ) % MOD
          = ( a * ( b ^ -1 ) ) % MOD = ( ( a % MOD ) * (( b ^ -1 ) % MOD ) % MOD ) . Here, b ^ -1 is b inverse ( 1 / b ). 
          
-  Euler Theorem, ( b ^ -1 ) % MOD == ( ( b ^ MOD-2 ) ) % MOD     ---> Equvalent
+  Fermats’s little theorem, ( b ^ -1 ) % MOD == ( ( b ^ MOD-2 ) ) % MOD     ---> Equvalent
         Answer  = ( a * Euler Theorem ) % MOD
   
   Example: 
@@ -90,7 +90,7 @@ Let, ( a / b ) % MOD ; It'll be easy if a is divisible by b; If the result is fr
     Now, ( 7 ^ -1) % 5 = ( 7 ^ 5-2 ) % 5 = ( 7 ^ 3 ) % 5 = 343 % 5 = 3
     Ans  = ( a * Euler Theorem ) % MOD = ( ( 28 % 5 ) * ( 3 % 5 ) % 5 ) = ( 3 * 3) % 5 = 9 % 5 = 4 (Ans.) 
           
-   উপরের Euler Theorem এ b (বেজ) সব সময় প্রাইম নাম্বার হবে। অন্য কোন  ক্ষেত্রে প্রযোজ্য না। উপরে ৭ প্রাইম হওয়ায় সূত্রটি প্রমাণিত হয়েছে।
+   উপরের Fermats’s little theorem এ b (বেজ) সব সময় প্রাইম নাম্বার হবে। অন্য কোন  ক্ষেত্রে প্রযোজ্য না। উপরে ৭ প্রাইম হওয়ায় সূত্রটি প্রমাণিত হয়েছে।
 
 Code:
 ll B_Inverse ( ll num , ll pwr , ll mod) /// BIG MOD Algo.
