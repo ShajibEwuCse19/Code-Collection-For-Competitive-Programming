@@ -15,5 +15,16 @@ Now, Prime Factor of 12 = 2 , 2 , 3 কারণ (2 x 2 x 3 = 12 )
                         = 28 (From Prime Factorization).
   
 Common Pattern for all numbers,
-SOD(x) = p^a , q^b , r^c
-       = (p^0 + p^1 + --- + p^a) + (q^0 + q^1 + --- + p^b) + (r^0 + r^1 + --- + r^c)
+SOD(x) = a^n , b^m , c^o
+       = (a^0 + a^1 + --- + a^n)         x    (b^0 + b^1 + --- + b^m)       x    (c^0 + c^1 + --- + c^o)
+       = { ( a ^ (n+1) - 1) / (a - 1) }  x  { ( b ^ (m+1) - 1) / (b - 1) }  x  { ( c ^ (o+1) - 1) / (c - 1) } 
+            -> Geometric Series ( a x ( r^n - 1 ) / (r - 1) ) here, a = a^0 or b^0 or c^0 = 1 and n = n + 1 or m+1 or o+1 (গুণত্তর ধারা)।
+  
+How it works,
+Let, SOD(x) = (a , b) x (c , d) -> Common pattern Let, a = 1, b = 2, c = 3, d = 4
+            = (a + b) x (c + d)                  = SOD(x) = (1 + 2 ) x ( 3 + 4 ) = 3 x 7 = 21
+            = (ac + ad) + (bc + bd)              = (1x3 + 1x4 + 2x3 + 2x4) 
+            = SOD(x)                             = 3 + 4 + 6 + 8 = 21
+            
+
+
