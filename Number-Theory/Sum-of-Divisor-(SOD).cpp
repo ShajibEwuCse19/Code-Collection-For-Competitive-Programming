@@ -25,6 +25,12 @@ Let, SOD(x) = (a , b) x (c , d) -> Common pattern Let, a = 1, b = 2, c = 3, d = 
             = (a + b) x (c + d)                  = SOD(x) = (1 + 2 ) x ( 3 + 4 ) = 3 x 7 = 21
             = (ac + ad) + (bc + bd)              = (1x3 + 1x4 + 2x3 + 2x4) 
             = SOD(x)                             = 3 + 4 + 6 + 8 = 21
+  
+  
+  
+Code:
+=====
+
             
 
 
