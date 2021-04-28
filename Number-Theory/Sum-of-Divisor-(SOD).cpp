@@ -9,7 +9,11 @@ Now, Prime Factor of 12 = 2 , 2 , 3 কারণ (2 x 2 x 3 = 12 )
     SOD(12)             = sum of all combination of  (2^2 , 3^1)
                         = (2^0 x 3^0) + (2^1 x 3^0) + (2^2 x 3^0) + (2^0 x 3^1) + (2^1 x 3^1) + (2^2 x 3^1) = 1 + 2 + 4 + 3 + 6 + 12 = 28
                         = 2^0 (3^0 + 3^1) + 2^1 (3^0 + 3^1) + 2^2 (3^0 + 3^1) -> Common numbers 
-                        = (3^0 + 3^1) x (2^0 + 2^1 + 2^2) -> Common (3^0 + 3^1)
+                        = (3^0 + 3^1) x (2^0 + 2^1 + 2^2) -> Common (3^0 + 3^1) the we'll get the common pattern.
                         = (1 + 3 ) x ( 1 + 2 + 4 )
                         = 4 x 7
                         = 28 (From Prime Factorization).
+  
+Common Pattern for all numbers,
+SOD(x) = p^a , q^b , r^c
+       = (p^0 + p^1 + --- + p^a) + (q^0 + q^1 + --- + p^b) + (r^0 + r^1 + --- + r^c)
