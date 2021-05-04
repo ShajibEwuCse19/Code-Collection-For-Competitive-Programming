@@ -156,7 +156,7 @@ ll SOD (ll n)
                 n /= p;
             }
 
-            ret = ( ret * (( pawP -1 ) / ( p - 1 ) ) ) ; /// common pattern = a.( r^(n+1) - 1 ) / r - 1 ) Here, a = p^0 = 1 and powP = n + 1 + 1 and ret = r;
+            ret = ( ret * (( pawP -1 ) / ( p - 1 ) ) ) ; /// Now pawP got the p^(n+1). so, (pawP - 1 ) / ( p -1 ) for Geometric Series.
         }
     }
 
