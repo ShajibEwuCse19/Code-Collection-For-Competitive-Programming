@@ -30,6 +30,91 @@ Let, SOD(x) = (a , b) x (c , d) -> Common pattern Let, a = 1, b = 2, c = 3, d = 
   
 Code:
 =====
+//Md. Shajibul Islam..
+//East West University, CSE Department'19
+
+#include<bits/stdc++.h>
+using namespace std;
+#define FAST             ios_base::sync_with_stdio(0); cin.tie(0); cout.tie(0)
+#define endl             '\n'
+#define loop(i,n)        for(int i=0;i<n;i++)
+#define CASE_PRINT       cout<<"Case "<<C<<": "
+#define CASE_PRINT2      cout<<"Case "<<C<<":"<<endl
+#define ll               long long
+#define ld               long double
+#define Pi               2*acos(0.0) // acos(-1.0)
+#define err              1e-9
+int dx[] = {0, 0, +1, -1, +1, +1, -1, -1};
+int dy[] = {+1, -1, 0, 0, +1, -1, +1, -1};
+
+const int mx = 1e7+123;
+
+bitset<mx> isPrime; ///if boolean array use n memory, bitset will use (n/32) memory. initially all index 0
+vector<int> prime; ///store all prime.
+
+///sieve Function..
+void sieve ( int n )
+{
+    n += 100;
+
+    isPrime[2] = 1;
+    prime.push_back(2);
+
+    for ( int i = 3; i <= n; i += 2 ) isPrime[i] = 1;
+
+    int lim = sqrt(n*1) + 2;
+
+    for ( int i = 3; i <= n; i += 2 ) {
+        if ( isPrime[i] == 1 ) {
+
+           prime.push_back(i);
+
+           if(i<=lim)
+           {
+               for ( int j = i*i; j <= n; j += ( i + i ) )isPrime[j] = 0;
+           }
+        }
+    }
+}
+
+ll SOD (ll n)
+{
+    ll ret = 1; ///Total sum.
+
+    for ( auto p : prime ) {
+        if ( 1LL * p * p > n ) break;
+
+        if ( n % p == 0 ) {
+
+                ll curSum = 1; ///update current sum when we get new prime. curSum = 1 means don't need to work for p^0 = 1
+                ll pawP   = 1; ///initial power p = 1 for p^0;
+
+            while ( n % p == 0 ) {
+
+                pawP   = ( pawP * p ) ; ///p^0 x p^1 = p^1 x p^1 = p^2 x p^1 = p^3.......Here, p means p^1
+                curSum = ( curSum + pawP ) ; ///1 + p^0 + p^1 + p^2 + ...... + p^n
+
+                n /= p;
+            }
+
+            ret = ( ret * curSum ) ; /// sum of all common pattern or all combination of prime factorization.
+        }
+    }
+
+    if ( n > 1 ) ret = ret * ( 1 + n ); /// ( 1 + n ) = p^0 + p^1 . Here, P^1 = remaining part of n which greater than 1.
+
+    return ret;
+}
+
+int main()
+{
+    FAST;
+    sieve(1e7); ///it'll work for (1e14).
+
+    ll n = 12; /// 1 + 2 + 3 + 4 + 6 + 12 = 28 = Prime Factorization ( (2^0 + 2^1 + 2^2) x (3^0 + 3^1) ) = 1 + 2 + 4 + 3 + 6 + 12 = 28.
+
+    cout << "Sum of Divisor of "<<n<<" = "<<SOD(n)<<endl;
+}
 
             
 
