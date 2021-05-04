@@ -116,6 +116,9 @@ int main()
     cout << "Sum of Divisor of "<<n<<" = "<<SOD(n)<<endl;
 }
 
+
+Complexity: Complexity of Sive + Prime Factorization = (sqrt(n) / ln(sqrt(n))) + log(n). [2 based log] 
+
             
 
 
