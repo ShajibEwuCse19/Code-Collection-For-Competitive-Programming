@@ -62,16 +62,16 @@ ll SOD (ll n)
             while ( n % p == 0 ) {
 
                 pawP   = ( pawP * p ) ; ///p^0 x p^1 = p^1 x p^1 = p^2 x p^1 = p^3.......Here, p means p^1
-                curSum = ( curSum + pawP ) ; ///1 + p^0 + p^1 + p^2 + ...... + p^n
+                curSum = ( curSum + pawP ) ; ///1 + p^1 + p^2 + ...... + p^n
 
                 n /= p;
             }
 
-            ret = ( ret * curSum ) ; /// sum of all common pattern or all combination of prime factorization.
+            ret = ( ret * curSum ) ; /// Multiplication of all commmon pattern.such as { ( 2^0 + 2^1 + ...+2^n) x (3^0 + ... + 3^n) x ....} 
         }
     }
 
-    if ( n > 1 ) ret = ret * ( 1 + n ); /// ( 1 + n ) = p^0 + p^1 . Here, P^1 = remaining part of n which greater than 1.
+    if ( n > 1 ) ret = ret * ( 1 + n ); /// ( 1 + n ) = p^0 + p^1 . Here, P^1 = remaining part of n which greater than 1. p^0 will add always.
 
     return ret;
 }
