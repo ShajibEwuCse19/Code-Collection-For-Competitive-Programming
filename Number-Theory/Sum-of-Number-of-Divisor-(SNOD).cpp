@@ -1,6 +1,6 @@
 Method-1:
 ==========
-Sum of Number of Divisor  কে Divisor Summatory Function বলা হয়। একটি সংখ্যা N দেওয়া থাকবে। ১ থেকে N পর্যন্ত সব গুলোর NOD বের করে সাথে সাথে যোগ করতে। হবে। 
+Sum of Number of Divisor  কে Divisor Summatory Function বলা হয়। একটি সংখ্যা N দেওয়া থাকবে। ১ থেকে N পর্যন্ত সব গুলোর NOD বের করে সাথে সাথে যোগ করতে হবে। 
 
 SNOD ( N ) = ∑ NOD ( i ) Here, Lower Limit, i = 1 and Upper Limit i = N;
 
@@ -53,7 +53,7 @@ DPair ( 4 ) = ( 1 , 4 ) , ( 2 , 2 ) , ( 4 , 1 )             = 3
 .
 DPair ( 10 ) = ( 1 , 10 ) , ( 2 , 5 ) , ( 5 , 2 ) ( 10 , 1 ) = 4
 ---------------------------------------------------------------------------
-Total DParir ( 10 ) = SNOD ( 10 )                            = 27
+Total DPair ( 10 ) = SNOD ( 10 )                            = 27
   
 ১ থেকে ১০ পর্যন্ত সব সংখ্যার প্রত্যে্কটিকে n ধরলে সংখ্যাগুলো আছে  ( a x b ) = n আকারে। যারা a < b or a == b or a > b এই ভাবে জোরা গঠন করে।
 
