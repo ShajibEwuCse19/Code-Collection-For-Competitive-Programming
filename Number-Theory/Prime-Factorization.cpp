@@ -88,13 +88,15 @@ int main()
     {
         for ( int i = p; i <= n; i += p )
         {
-            fact[i].push_back ( p );
+            fact[i].push_back ( p ) ;
         }
     }
 
     for ( int i = 2; i <= 10; i++ ) {
-        cout<<"Prime Divisor of "<<i<<" = ";
-        for(auto x : fact[i])cout<<x<<" ";cout<<endl;
+        
+        cout << " Prime Divisor of " << i << " = " ;
+        
+        for( auto x : fact[i] ) cout << x << " " ; cout << endl ; 
     }
 
 
