@@ -83,20 +83,17 @@ ans = ans ( a > b ) = ans ( a < b ). অর্থাৎ আমরা যদি (
 ( a == b ) পাওয়া যাবে যদি সংখ্যাটি Perfect Square  ( ১, ৪ , ৯ , ১৬ , ---- , PS ) হয়। যেমন, 4 x 4 = 16 , 5 x 5 = 25 ইত্যাদি। 
 ans = total Perfect Square for  ( a == b ).
   
- Final Answer = Total ( a < b ) + Total ( a > b ) + Total ( a == b ) 
-              = 2 x Total ( a < b ) + Perfect Square.
+ Final Answer = Total ( a < b ) + Total ( a > b ) + Total ( a == b ) = 12 + 12 + 3 = 27
+              = 2 x Total ( a < b ) + Perfect Square = 2 x 12 + 3 = 27
+              = ( 2 x ∑ ( ( N / i ) - i) , lim 1 to sqrt(N) ) + Perfect Square = 2 x 12 + 3 = 27 
   
 Code :
 =======
-const int mx = 1e5+123;
-
-int main()
+int SNOD ( int n )
 {
-    FAST;
-    int n = 10;
-    int lim = floor(sqrt(n)); /// loop 1 to sqrt ( n ) 
+    int lim = floor(sqrt(n));/// loop 1 to sqrt ( n ) 
 
-    int ans = 0; /// Store total num who are ( a < b ) 
+   int ans = 0; /// Store total num who are ( a < b ) =  ( ∑ ( ( N / i ) - i) , lim 1 to sqrt(N) )
     int ps = 0; /// Calculate total Perfect Square 
     for(int i = 1; i <= lim; i++)
     {
@@ -109,7 +106,15 @@ int main()
 
     ans = ( ans + ps ) ; /// Add Perfect Square in answer.
 
-    cout << ans << endl; /// SNOD
-
+    return ans;/// SNOD = ( 2 x ∑ ( ( N / i ) - i) , lim 1 to sqrt(N) ) + Perfect Square
 }
 
+int main()
+{
+    FAST;
+    int n = 10;
+
+    cout << SNOD( n ) << endl;
+}
+
+Complexity : O ( Sqrt (N) ) /// Just a loop 1 to sqrt(N)
