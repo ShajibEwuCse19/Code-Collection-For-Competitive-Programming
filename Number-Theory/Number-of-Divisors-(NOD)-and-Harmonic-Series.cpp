@@ -15,39 +15,39 @@ int main()
     FAST;
     int n = 10;
 
-    for(int i=1; i<=n; i++)
+    for( int i = 1 ; i <= n ; i++ )
     {
-        for(int j = i; j <= n; j += i)
+        for( int j = i ; j <= n ; j += i )
         {
             divisor[j].push_back(i); /// J দ্বারা যে সব সংখ্যা (i) নিঃশ্বেষে বিভাজ্য তারা সেই সেটে চলে যাবে । যেমন, ১ সব সেটে যাবে। ২ যবে ২,৪,৬....এর সেটে।
 
-            divisible_Num[i].push_back(j); /// i দ্বারা যে সব সংখ্যা (j) নিঃশ্বেষে বিভাজ্য তাদের সেট। যেমনঃ ২ = ২ ৪ ৬ ৮ ... 
+            divisible_Num[i].push_back(j); /// i দ্বারা যে সব সংখ্যা (j) নিঃশ্বেষে বিভাজ্য তাদের সেট। যেমনঃ ২ = ২ ৪ ৬ ৮ , ১ এর সেটে সব সংখ্যা থাকবে। 
         }
     }
 
-    cout<<"Divisor of Every Numbers"<<endl;
+    cout << " Divisor of Every Numbers " << endl ;
   
-    for(int i = 1; i <= n; i++)
+    for( int i = 1; i <= n; i++ )
     {
-        cout<< "Divisor of "<< i <<" : ";
+        cout << " Divisor of " << i << " : " ;
 
-        for(auto x : divisor[i])
+        for( auto x : divisor[i] )
         {
-            cout<< x << " ";
+            cout << x << " " ;
         }
 
-        cout<<endl;
+        cout << endl ;
     }
 
-    cout<<endl<<endl;
+    cout << endl << endl ;
 
-    cout<<"Divisible of every number in range 1 to "<<n<<endl;
+    cout << " Divisible of every number in range 1 to " << n << endl ;
   
-    for(int i = 1; i <= n; i++)
+    for( int i = 1 ; i <= n ; i++ )
     {
-        cout<< "Divisible by "<< i <<" : ";
+        cout << " Divisible by " << i << " : " ;
 
-        for(auto x : divisible_Num[i])
+        for( auto x : divisible_Num[i] )
         {
             cout<< x << " ";
         }
@@ -57,12 +57,12 @@ int main()
 
     ///Find all numbers that is divisible 2 and smaller than 10 when n>=10 in input.
 
-    cout << "Total number that is divisible by 2 and smaller than 10 = " << 10/2 <<endl; ///formula = n/x
-    ///Here, n/x = index of n=10. such as, 2 = 2 4 6 8 10. index of 10 = 10/2 = 5.
+    cout << " Total number that is divisible by 2 and smaller than 10 = " << 10/2 << endl; ///formula = n/x
+    ///Here, n/x = index of n = 10 . such as, 2 = 2 4 6 8 10. index of 10 = 10/2 = 5.
 
-    int index = 10/2 ;
-    cout << "Numbers are : " ;
-    for(int i = 0 ; i < index ; i++) cout << divisible_Num[2][i] << " " ;
+    int index = 10 / 2 ;
+    cout << " Numbers are : " ;
+    for( int i = 0 ; i < index ; i++ ) cout << divisible_Num[2][i] << " " ;
     cout << endl ;
 }
 
