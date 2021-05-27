@@ -154,6 +154,8 @@ Total NOD  =  set2 x set3 x set5 = ৩টি x ২টি x ২টি = ১২ট
     
 ALL Divisor, NOD ( 60 ) = 1 , 5 , 3 , 15 , 2 , 10 , 6 , 30 , 4 , 20 , 12 , 60 মোট ১২টি ডিভাইজর ৬০ এর যা Prime Factor of 60 (2 , 3 , 5 ) থেকে নির্ণয় করা হয়েছে । 
 
+=> একটি সংখ্যার সর্বোচ্চ N^(1/3) or CubicRoot(N) টি ডিভাইজর থাকতে পারে।
+
 Code:
 ==========
 //Md. Shajibul Islam..
