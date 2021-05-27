@@ -10,6 +10,8 @@ const int mx = 1e7+123;
 vector < int > divisor[mx];
 vector < int > divisible_Num[mx];
 
+int cnt[mx]; /// Total Number of Divisor.
+
 int main()
 {
     FAST;
@@ -19,17 +21,20 @@ int main()
     {
         for( int j = i ; j <= n ; j += i )
         {
-            divisor[j].push_back(i); /// J দ্বারা যে সব সংখ্যা (i) নিঃশ্বেষে বিভাজ্য তারা সেই সেটে চলে যাবে । যেমন, ১ সব সেটে যাবে। ২ যবে ২,৪,৬....এর সেটে।
+            divisor[j].push_back(i); /// i will go to the set which j divisible by i. such as, 1 will go every set, 2 will go 2,4,6,8 etc set.
 
-            divisible_Num[i].push_back(j); /// i দ্বারা যে সব সংখ্যা (j) নিঃশ্বেষে বিভাজ্য তাদের সেট। যেমনঃ ২ = ২ ৪ ৬ ৮ , ১ এর সেটে সব সংখ্যা থাকবে। 
+            divisible_Num[i].push_back(j); /// Numbers that are divisible by i. all are divisible by 1, 2,4,6 etc are divisible by 2.
+
+            cnt[j]++;///Count Total NOD
         }
     }
 
+
     cout << " Divisor of Every Numbers " << endl ;
-  
+
     for( int i = 1; i <= n; i++ )
     {
-        cout << " Divisor of " << i << " : " ;
+        cout << " Total Divisor of " << i << " = " << cnt[i] << " : " ;
 
         for( auto x : divisor[i] )
         {
@@ -42,7 +47,7 @@ int main()
     cout << endl << endl ;
 
     cout << " Divisible of every number in range 1 to " << n << endl ;
-  
+
     for( int i = 1 ; i <= n ; i++ )
     {
         cout << " Divisible by " << i << " : " ;
@@ -65,6 +70,7 @@ int main()
     for( int i = 0 ; i < index ; i++ ) cout << divisible_Num[2][i] << " " ;
     cout << endl ;
 }
+
 
 Output:
 Divisor of Every Numbers
