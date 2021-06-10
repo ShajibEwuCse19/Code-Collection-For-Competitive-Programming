@@ -1,5 +1,5 @@
-Code:
-===========
+Code Using Prime Factorization and Sieve Method :
+==========================================================
 const int mx = 1e7+123 ;
 bitset<mx> isPrime ; ///if boolean array use n memory, bitset will use (n/32) memory. initially all index 0
 vector<int> prime ; ///store all prime.
@@ -72,7 +72,7 @@ Complexity: Complexity of Prime Fact = O ( sqrt( n ) / ln ( sqrt ( n ) ).
 
 Theory Part:
 =================
-Phi ( N ) = Number of Total Co-Prime of Relatively Prime of N in renge 1 to N. 
+Phi ( N ) = Number of Total Co-Prime or Relatively Prime of N in renge 1 to N. 
   
 Co-Prime or Relatively Prime : 
 Let, x and y are two numbers. x and y will be Co-Prime or Relatively Prime if GCD ( x , y ) = 1. That's mean, there is no common divisor of x and y. 
@@ -86,19 +86,20 @@ Phi ( N ) = N - 1 ( All numbers except N where N is Prime ).
   
   
 If, N is a Prime Number, Phi ( N ^ a ) = ?
-Let, N = 2 and a 3 then, 2 ^ 3 = 8 and Phi ( 2 ^ 3 ) = ?.
+Let, N = 2 and a = 3 then, ( 2 ^ 3 ) = 8 and Phi ( 2 ^ 3 ) = ?.
 All Numbers = 1 , 2 , 3 , 4 , 5 , 6 , 7 , 8 . Here, Numbers Divisible by N = 2 , 4 , 6 , 8 has at least one divisor which is N = 2. Though, N is a prime, So, 1 , 3 , 5, 7 are 
-Co-Prime of N^a . 
-Total Numbers divisible by N = 2 ( base ) is ( 8 / 2 ) = 4.
-Phi ( N ^ a ) = N^a - ( N^a / N ) = 8 - ( 8 / base) = 8 - ( 8 / 2 ) = 8 - 4 = 4 ( Total Numbers are not divisible by N ( base ) where N is a Prime ).
+not divisible by 2 ( N ) and all numbers are Co-Prime of N^a . 
+Total Numbers divisible by 2 ( N or base ) is ( 8 / 2 ) = 4 ( 1 , 3 , 5, 7 ).
+Phi ( N ^ a ) = N^a - ( N^a / N ) = 8 - ( 8 / base) = 8 - ( 8 / 2 ) = 8 - 4 = 4 ( Total Numbers those are not divisible by N ( base ) where N is a Prime ).
               = N^a ( 1 - 1 / N )
               = N^a { ( N - 1 ) / N } ---> Another Formula.
+              = (N^a / N) x ( N - 1 ) ---> Used in the Programming Code.
               = 2^3 x ( (2 - 1 ) / 2 ) = 8 x (1 / 2 ) = 8 x 0.5 = 4
   
   
   
-Phi ( P^a x Q^b x R^c ) = ? Where P , Q , R are prime numbers.
-Phi ( P^a x Q^b x R^c ) = Phi ( P^a ) x  Phi ( Q^b ) x  Phi ( R^b )
+Phi ( P^a x Q^b x R^c ) = ? Where P , Q , R are prime numbers. একটি সংখ্যার প্রাইম ফ্যাক্টোরাইজ হচ্ছে ( P^a x Q^b x R^c ) = N .
+Phi ( P^a x Q^b x R^c ) = Phi ( P^a ) x  Phi ( Q^b ) x  Phi ( R^c )
                         = P^a ( ( P - 1 ) / P )    x     Q^b ( ( Q- 1 ) / Q )    x    R^c ( ( R - 1 ) / R )
                         = ( P^a x Q^b x R^c ) x [ ( ( P - 1 ) / P ) x ( ( Q- 1 ) / Q ) x ( ( R - 1 ) / R ) ] Here, ( P^a x Q^b x R^c ) is Prime Factorization of N.
                         = N x [ ( ( P - 1 ) / P ) x ( ( Q - 1 ) / Q ) x ( ( R - 1 ) / R ) ] ---> Global Equation of Phi.
