@@ -188,7 +188,7 @@ int dy[] = {+1, -1, 0, 0, +1, -1, +1, -1};
 
 const int mx = 1e7+123;
 
-vector<int> fact[mx];///store all prime divisor here.
+vector<int> fact(mx);///store all prime divisor here.
 
 bitset<mx> isPrime; ///if boolean array use n memory, bitset will use (n/32) memory. initially all index 0
 vector<int> prime; ///store all prime.
