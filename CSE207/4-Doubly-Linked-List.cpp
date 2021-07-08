@@ -64,7 +64,7 @@ int insert_last(int item)
     return SUCCESS_VALUE ;
 }
 
-int delete_item(int item)
+/*int delete_item(int item)
 {
     struct node *temp,*prev;
     temp = head; ///we can use temp = tail to traverse tail to head.
@@ -98,7 +98,7 @@ int delete_item(int item)
     }
 
 
-}
+}*/
 
 ///delete item from tail
 int delete_item(int item)
@@ -126,7 +126,7 @@ int delete_item(int item)
             {
                 ///remove the item which is not in head or tail
                 ///A-><-B-><-C then, A-><-temp-><-C then, A-><-C. Here, A = temp->prev and C = temp->next and A = temp.
-                temp->next->prev = temp->prev; 
+                temp->next->prev = temp->prev;
                 temp->prev->next = temp->next;
                 free(temp);
             }
