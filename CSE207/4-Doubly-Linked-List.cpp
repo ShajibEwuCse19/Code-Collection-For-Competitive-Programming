@@ -100,6 +100,48 @@ int delete_item(int item)
 
 }
 
+///delete item from tail
+int delete_item(int item)
+{
+    struct node *temp,*next,*prev;
+    temp = tail;
+
+    while(temp != NULL)
+    {
+        if(temp->item == item)
+        {
+            if(temp == tail)
+            {
+                tail = temp->prev; ///tail will be previous node. So, update tail.
+                temp->prev->next = 0; /// So, next of prev node will be 0.
+                free(temp);
+            }
+            else if(temp == head)
+            {
+                head = temp->next; ///head will be next of temp.
+                temp->next->prev = 0; ///prev of temp->next will be 0
+                free(temp);
+            }
+            else
+            {
+                ///remove the item which is not in head or tail
+                ///A-><-B-><-C then, A-><-temp-><-C then, A-><-C. Here, A = temp->prev and C = temp->next and A = temp.
+                temp->next->prev = temp->prev; 
+                temp->prev->next = temp->next;
+                free(temp);
+            }
+
+            return SUCCESS_VALUE;
+        }
+
+        temp = temp->prev;
+    }
+    return NULL_VALUE;
+
+}
+
+///Print Functions.
+
 void print_list_from_head_to_tail()
 {
     struct node *temp = head;
