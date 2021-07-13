@@ -26,7 +26,7 @@ int insert_item(int item)
 		tempList = (int*) malloc (listMaxSize*sizeof(int)) ;
 		int i;
         for( i = 0; i < length ; i++ ){
-            tempList[i] = list[i] ; //copy all items from list to tempList
+            tempList[i] = list[i] ; //copy all items from list to tempList. we can use: *(tempList + i) = *(list + i) , *(arrayName + index) and arrayName[index] both same. 
         }
         free(list) ; //free the memory allocated before
         list = tempList ; //make list to point to new memory
