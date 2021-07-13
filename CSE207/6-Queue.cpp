@@ -44,8 +44,7 @@ int main(){
   
 Implementation - 2 (Static Stack using pointer)
 ================================================
-
-
+same as stack implementation.
 
 
   
