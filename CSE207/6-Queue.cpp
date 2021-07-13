@@ -96,23 +96,20 @@ int dequeue()
     if(isEmapty())return NULL_VALUE;
     int item = Rear->item;
 
-    Queue *temp = Rear;
-
     if(Rear == Front) ///tail == head
     {
-        free(Rear);
-        free(Front);
         Rear = 0;
-        temp = 0;
-
-        return item;
+        Front = 0;
     }
+    else
+    {
+        Queue *temp = Rear;
 
-    Rear = temp->next;
+        Rear->next->prev = 0;
+        Rear = Rear->next;
 
-    temp->next->prev = 0;
-
-    free(temp);
+        free(temp);
+    }
 
     return item;
 }
@@ -138,10 +135,15 @@ int main()
 {
     initialization();
 
-    cout<<"Input  = 1 2 3"<<endl;
+    cout<<"Input  = 1 2 3 4 5"<<endl;
     enqueue(1);
     enqueue(2);
     enqueue(3);
+    enqueue(4);
+    enqueue(5);
+
+    //cout<<Rear_item()<<endl;
+    //cout<<Front_item()<<endl;
 
     cout<<"Output = ";
     while(!isEmapty())
@@ -151,7 +153,6 @@ int main()
     cout<<endl;
 
 }
-
 
 
 Complexity: All above functions work wiht O(1) time.
