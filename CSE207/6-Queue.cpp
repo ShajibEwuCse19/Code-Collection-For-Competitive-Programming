@@ -48,11 +48,112 @@ same as stack implementation.
 
 
   
-Implementation - 1 (Dynamic Stack using Linked List)
+Implementation - 1 (Dynamic Stack using Doubly Linked List)
 ====================================================
+#include<bits/stdc++.h>
+using namespace std;
+#define STACK_MAX 100
+#define NULL_VALUE -99999
+#define SUCCESS_VALUE 99999
+
+typedef struct node
+{
+    int item;
+    struct node *next, *prev;
+}Queue;
+
+Queue *Front, *Rear; ///Head = Rear and Tail = Front is queue.
+
+void initialization()
+{
+    Front = 0;///tail
+    Rear = 0;///head
+}
+
+/// Function to insert an item from queue.
+void enqueue(int item) ///using Doubly Linked list (insert last).
+{
+    Queue *new_node = (Queue*)malloc(sizeof(Queue)); ///item,next
+    new_node->item = item;
+
+    new_node->next = 0;
+    new_node->prev = Front;
+    Front = new_node;
+
+    if(new_node->prev != 0)new_node->prev->next = new_node;
+
+    else Rear = new_node;
+}
+
+bool isEmapty()
+{
+    return !Front and !Rear; ///return 1 (true) if Front = 0, otherwise it'll return 0(false).
+}
+
+/// Function to remove an item from queue.
+int dequeue()
+{
+    if(isEmapty())return NULL_VALUE;
+    int item = Rear->item;
+
+    Queue *temp = Rear;
+
+    if(Rear == Front) ///tail == head
+    {
+        free(Rear);
+        free(Front);
+        Rear = 0;
+        temp = 0;
+
+        return item;
+    }
+
+    Rear = temp->next;
+
+    temp->next->prev = 0;
+
+    free(temp);
+
+    return item;
+}
+
+/// Function to get front of queue
+int Front_item()
+{
+    if(isEmapty())return NULL_VALUE;
+
+    return Front->item;
+}
+
+/// Function to get rear of queue
+int Rear_item()
+{
+    if(Rear == 0)return NULL_VALUE;
+
+    return Rear->item;
+}
+
+
+int main()
+{
+    initialization();
+
+    cout<<"Input  = 1 2 3"<<endl;
+    enqueue(1);
+    enqueue(2);
+    enqueue(3);
+
+    cout<<"Output = ";
+    while(!isEmapty())
+    {
+        cout<<dequeue()<<" ";
+    }
+    cout<<endl;
+
+}
 
 
 
-Complexity: 
+Complexity: All above functions work wiht O(1) time.
 
 
