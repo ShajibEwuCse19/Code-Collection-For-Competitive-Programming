@@ -180,5 +180,7 @@ int main()
     //cout<<"The stack is Empty or not = "<<isEmapty()<<endl;
 }
 
+Complexity: push(), pop(), isEmpty() and peek() all take O(1) time
+
 
 
