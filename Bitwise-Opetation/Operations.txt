@@ -171,16 +171,16 @@ Answer:if((n>>position) & 1 == 1 ) ans = 1. else ans = 0.
 Answer: if(n & 1 == 1) ans odd / Last Bit ON
         if (n & 1 == 0) ans even / Last Bit OFF
         
-3. nth Position ON or OFF?
+3. How to check nth Position ON or OFF?
 Ans : if ( n & ( 1 << pos ) ) = 1 (ON) = 0 (OFF), এখনে pos বিটকে ১ এর সাথে AND করে চেক করা হচ্ছে যে বিট ১ নাকি ০.
     : if ( ( n >> pos ) & 1)  = 1 (ON) = 0 (OFF), এখনে pos বিটকে শেষ পজিশনে নিয়ে এসে ১ এর সাথে AND করে চেক করা হচ্ছে যে বিট ১ নাকি ০.
   
   
- 4. How ON nth Bit?
+ 4. How to ON nth Bit?
  Ans : ( n | ( 1 << pos ) ), এখানে, এখনে pos বিটকে ১ এর সাথে OR করে চেক করা হচ্ছে। এক্ষেত্রে pos এ ১ থাকেলে তা চেঞ্জ হবে না ( ১ । ১ = ১ ), ০ থাকলে তা ১ হবে ( ১ । ০ = ১ ).
                                     OR করার কারণে pos এর বাম ডানের বিট অপরিবর্তিত থাকবে। 
  
- 4. How OFF nth Bit?
+ 4. How to OFF nth Bit?
  Ans : ( n & ( ( (1LL << 30LL) - 1LL) - (1LL<<pos) ) ) = ( n AND ( (2^30 - 1) - 2^pos )
  এখানে, ( 1LL << 30 ) হচ্ছে ৩০ বিটের সংখ্যা যার ১ম বিট ১ এবং বাকি ২৯ বিট ০       = ১০০০০০০০০০০..................০
         ((1LL << 30 ) - 1) হচ্ছে ৩০ বিটের সংখ্যা যার ১ম বিট ০ এবং বাকি ২৯ বিট ১  = ০১১১১১১১১১১১১১..................১
