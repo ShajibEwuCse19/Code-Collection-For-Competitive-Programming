@@ -7,10 +7,10 @@ int n,m;
 void dijkstra(int src)
 {
     memset(vis,0,sizeof vis);
-    for(int i=0;i<=n;i++)dis[i] = INT_MAX;
-    dis[src] = 0;
+    for(int i=0;i<=n;i++)dis[i] = INT_MAX; /// Initialization
+    dis[src] = 0; /// distance of src is zero
 
-    priority_queue<pair<int,int>>pq;
+    priority_queue<pair<int,int>>pq; /// first check the min one. 
     pq.push({0,src});
 
     while(!pq.empty())
@@ -31,7 +31,7 @@ void dijkstra(int src)
             {
                 dis[v] = dis[u] + w;
 
-                pq.push({-dis[v] , v});
+                pq.push({-dis[v] , v}); /// cost negative beacuse pq sort decreasing order which is increasing in positive form. 
             }
         }
     }
