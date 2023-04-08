@@ -26,7 +26,7 @@ void dijkstra(int src, int n)
             int b = v.first; ///adj node
             int c = v.second;///distance -> u to b
 
-            if(dis[b] > dis[u] + c)
+            if(dis[u] + c < dis[b])  /// current node + distance < already calculated distance -> got a min distance, So, update it
             {
                 dis[b] = dis[u] + c;
 
