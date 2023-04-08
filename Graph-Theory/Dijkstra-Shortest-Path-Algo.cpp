@@ -16,9 +16,10 @@ void dijkstra(int src)
     while(!pq.empty())
     {
         int u = pq.top().second;
+        int curD = pq.top().first;
         pq.pop();
 
-        if(vis[u])continue;
+        if(vis[u] or dis[u]<curD)continue; /// we don't need to check if we already [using another path] have the min result. 
         vis[u] = 1;
 
         for(auto i : adj[u])
@@ -68,5 +69,3 @@ Distance 1 to 3 is =>9
 Distance 1 to 4 is =>11
 Distance 1 to 5 is =>11
 */
-
-
