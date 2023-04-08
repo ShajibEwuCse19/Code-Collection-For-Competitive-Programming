@@ -71,3 +71,4 @@ Distance 1 to 5 is =>11
 */
 
 ///Complexity : O (E + V * log (V)) base 2 || BFS complexity O (V + E) but in Dijkstra we used Priority queue which works on log(n) base 2. 
+/// Dijkstra is the fastest algo for determine single source and weighted shortest path.
