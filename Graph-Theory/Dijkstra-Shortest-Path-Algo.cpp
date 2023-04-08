@@ -2,9 +2,9 @@ const int mx = 1e5+123;
 vector<pair<int,int>>adj[mx];///node->{weight,adj node}
 int vis[mx];
 int dis[mx];///level or distance count.
-int n,m,w;
+int n,m;
 
-void dijkstra(int src, int n)
+void dijkstra(int src)
 {
     memset(vis,0,sizeof vis);
     for(int i=0;i<=n;i++)dis[i] = INT_MAX;
@@ -23,14 +23,14 @@ void dijkstra(int src, int n)
 
         for(auto v : adj[u])
         {
-            int b = v.first; ///adj node
-            int c = v.second;///distance -> u to b
+            int node = v.first; ///adj node
+            int curD = v.second;///distance -> u to b
 
-            if(dis[u] + c < dis[b])  /// current node + distance < already calculated distance -> got a min distance, So, update it
+            if(dis[u] + curD < dis[node])  /// current node + distance < already calculated distance -> got a min distance, So, update it
             {
-                dis[b] = dis[u] + c;
+                dis[node] = dis[u] + curD;
 
-                pq.push({-dis[b] , b});
+                pq.push({-dis[node] , node});
             }
         }
     }
@@ -48,7 +48,7 @@ int main()
         ///adj[v].push_back({u,w});
     }
 
-    dijkstra(1,n);
+    dijkstra(1);
 
     for(int i=1;i<=n;i++)
     cout<<"Distance "<<1<<" to "<<i<<" is =>"<<dis[i]<<endl;
