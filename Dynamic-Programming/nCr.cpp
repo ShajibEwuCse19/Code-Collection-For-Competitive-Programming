@@ -1,5 +1,4 @@
-//Md. Shajibul Islam..
-//East West University, CSE Department'19
+Exercise: Given n and r. Determine cCr using Dynamic Programming.
 
 #include<bits/stdc++.h>
 using namespace std;
